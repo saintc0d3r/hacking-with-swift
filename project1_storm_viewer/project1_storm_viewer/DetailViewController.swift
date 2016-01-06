@@ -32,8 +32,16 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
+        
+        // add button for sharing image to social media and others
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "shareTapped")
     }
-
+    
+    func shareTapped(){
+        let activity_view_controller = UIActivityViewController(activityItems: [detailImageView.image!], applicationActivities: [])
+        presentViewController(activity_view_controller, animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -50,5 +58,5 @@ class DetailViewController: UIViewController {
         super.viewDidAppear(animated)
         self.navigationController?.hidesBarsOnTap = false
     }
+    
 }
-
