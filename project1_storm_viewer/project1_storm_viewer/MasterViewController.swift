@@ -11,6 +11,7 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
+    // Array property to hold a list of image filenames
     var objects = [String]()
 
 
@@ -35,6 +36,7 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
+                // Passing touched detail item into Detail View controller
                 let navigation_controller = segue.destinationViewController as! UINavigationController
                 let controller = navigation_controller.topViewController as! DetailViewController
                 controller.detailItem = objects[indexPath.row]
@@ -57,7 +59,8 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-
+        
+        // Fill each table's cell with image's file name
         let object = objects[indexPath.row]
         cell.textLabel!.text = object
         return cell

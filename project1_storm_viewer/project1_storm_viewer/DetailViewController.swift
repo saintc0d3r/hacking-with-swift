@@ -39,11 +39,13 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // Hide navigation bar before this view is shown
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.hidesBarsOnTap = true
     }
     
+    // Show navigation bar when the app leaves this view
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.hidesBarsOnTap = false
